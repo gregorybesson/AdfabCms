@@ -1,0 +1,12 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('adfabcms');?>
+
+<div id="winners" class="list row-fluid">
+	<div class="row-fluid">
+        <h1>Les gagnants</h1>
+    </div>
+	<?php foreach($this->pages as $page):?>
+	    <?php $this->partial()->setObjectKey('page')?>
+	    <?php echo $this->partial('adfab-cms/frontend/page/partial/page.phtml', $page) ?>
+	<?php endforeach;?>
+	<?php echo $this->paginationControl($this->pages, 'Sliding', 'adfab-cms/frontend/page/pagination_winnerlist.phtml'); ?>
+</div>
