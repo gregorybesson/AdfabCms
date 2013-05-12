@@ -55,13 +55,12 @@ class IndexController extends AbstractActionController
             $paginator = $pages;
         }
 
+        $adserving = $this->getOptions()->getAdServing();
+        $adserving['cat2'] = 'article';
+        
         $this->layout()->setVariables(
             array(
-                'adserving'       => array(
-                    'cat1' => 'fr_clubmetro',
-                    'cat2' => 'article',
-                    'cat3' => ''
-                ),
+                'adserving'       => $adserving,
                 'currentPage' => array(
                     'pageGames' => '',
                     'pageWinners' => 'winners'
@@ -123,14 +122,14 @@ class IndexController extends AbstractActionController
         $this->getViewHelper('HeadMeta')->setProperty('bt:user', $bitlyuser);
         $this->getViewHelper('HeadMeta')->setProperty('bt:key', $bitlykey);
 
+        $adserving = $this->getOptions()->getAdServing();
+        $adserving['cat2'] = 'article';
+        $adserving['cat3'] = '&EASTarticleid='.$page->getId();
+        
         $this->layout()->setVariables(
             array(
                 'breadcrumbTitle' => $page->getTitle(),
-                'adserving'       => array(
-                    'cat1' => 'fr_clubmetro',
-                    'cat2' => 'article',
-                    'cat3' => '&EASTarticleid='.$page->getId()
-                ),
+                'adserving'       => $adserving,
                 'currentPage' => array(
                     'pageGames' => '',
                     'pageWinners' => 'winners'

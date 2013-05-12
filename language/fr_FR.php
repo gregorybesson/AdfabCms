@@ -19,4 +19,10 @@ return array(
 	'Date of close' 	=> 'Date de dépublication',
 	'Secondary image'   => 'Visuel Slider',
 	
+	// Admin page List Blocks
+	'Add new block' 	=> 'Ajouter un bloc',
+	
+	// Admin Create/Edit Block
+	'This Block is available for DynaBlock' => 'Ce bloc est dynamique',
+	
 );

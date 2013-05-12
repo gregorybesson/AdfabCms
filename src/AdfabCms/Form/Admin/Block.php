@@ -60,7 +60,7 @@ class Block extends ProvidesEventsForm
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'on_call',
             'options' => array(
-                 'label' => 'This Block is available for DynaBlock',
+                 'label' => $translator->translate('This Block is available for DynaBlock', 'adfabcms'),
             ),
         ));
 
