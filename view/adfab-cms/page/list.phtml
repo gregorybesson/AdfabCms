@@ -35,10 +35,10 @@ if (isset($fm[0]))
     <?php foreach ($this->pages as $page): ?>
         <tr>
             <!-- <td><?php echo $page->getId() ?></td> -->
-            <td><?php echo $page->getPublicationDate()->format('d/m/Y') ?></td>
+            <td><?php echo ($page->getPublicationDate())? $page->getPublicationDate()->format('d/m/Y'):''; ?></td>
             <td><?php echo $page->getTitle() ?></td>
             <td><?php echo $page->getIdentifier() ?></td>
-            
+
             <?php $editLink = $this->url('zfcadmin/adfabcmsadmin/pages/edit', array('pageId' => $page->getId()));?>
             <?php $deleteLink = $this->url('zfcadmin/adfabcmsadmin/pages/remove', array('pageId' => $page->getId()));?>
             <td><a href='<?php echo $editLink ?>'><?php echo $this->translate('Edit'); ?></a> | <a href='<?php echo $deleteLink ?>'><?php echo $this->translate('Delete'); ?></a></td>
