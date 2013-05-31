@@ -19,7 +19,7 @@ protected $options, $blockMapper;
     public function listAction()
     {
         $blockMapper = $this->getBlockMapper();
-        $blocks = $blockMapper->findAll();
+        $blocks = $blockMapper->findAllBy(array('created_at' => 'DESC'));
         if (is_array($blocks)) {
             $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($blocks));
         } else {
@@ -91,6 +91,28 @@ protected $options, $blockMapper;
         }
 
         return $viewModel->setVariables(array('createBlockForm' => $form));
+    }
+	
+	public function removeAction()
+    {
+        $blockId = $this->getEvent()->getRouteMatch()->getParam('blockId');
+
+        if (!$blockId) {
+            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/list');
+        }
+
+        $block = $this->getAdminBlockService()->getBlockMapper()->findById($blockId);
+
+        if ($block) {
+            try {
+                $this->getAdminBlockService()->getBlockMapper()->remove($block);
+                $this->flashMessenger()->setNamespace('adfabcms')->addMessage('The block has been deleted');
+            } catch (\Doctrine\DBAL\DBALException $e) {
+                
+            }
+        }
+
+        return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/list');
     }
 
     public function setOptions(ModuleOptions $options)
