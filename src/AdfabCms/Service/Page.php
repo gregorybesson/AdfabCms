@@ -36,6 +36,8 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
         $entityManager = $this->getServiceManager()->get('zfcuser_doctrine_em');
         $form  = $this->getServiceManager()->get('adfabcms_page_form');
         //$form->setHydrator(new ClassMethods());
+        $form->get('publicationDate')->setOptions(array('format' => 'Y-m-d'));
+        $form->get('closeDate')->setOptions(array('format' => 'Y-m-d'));
 
         if (! $page) {
 
@@ -58,11 +60,13 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
         $media_url = $this->getOptions()->getMediaUrl() . '/';
 
         if (isset($data['publicationDate']) && $data['publicationDate']) {
-            $data['publicationDate'] = \DateTime::createFromFormat('d/m/Y', $data['publicationDate']);
+            $tmpDate = \DateTime::createFromFormat('d/m/Y', $data['publicationDate']);
+            $data['publicationDate'] = $tmpDate->format('Y-m-d');
         }
 
         if (isset($data['closeDate']) && $data['closeDate']) {
-            $data['closeDate'] = \DateTime::createFromFormat('d/m/Y', $data['closeDate']);
+            $tmpDate = \DateTime::createFromFormat('d/m/Y', $data['closeDate']);
+            $data['closeDate'] = $tmpDate->format('Y-m-d');
         }
 
         $form->setData($data);
