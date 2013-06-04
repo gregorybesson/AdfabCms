@@ -47,4 +47,15 @@ interface PageInterface
      * @return mixed
      */
     public function getContent();
+	
+	/**
+     * @param $chapo
+     * @return mixed
+     */
+    public function setChapo($chapo);
+
+    /**
+     * @return mixed
+     */
+    public function getChapo();
 }

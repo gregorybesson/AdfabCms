@@ -60,6 +60,11 @@ class Page implements PageInterface, InputFilterAwareInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
+	
+	/**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $chapo;
 
     /**
      * @ORM\Column(type="boolean")
@@ -181,6 +186,25 @@ class Page implements PageInterface, InputFilterAwareInterface
     public function getContent()
     {
         return $this->content;
+    }
+	
+	/**
+     * @param $chapo
+     * @return Page
+     */
+    public function setChapo($chapo)
+    {
+        $this->chapo = $chapo;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChapo()
+    {
+        return $this->chapo;
     }
 
     /**

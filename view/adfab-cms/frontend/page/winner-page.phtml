@@ -20,32 +20,14 @@
 					<img src="<?php echo $this->basePath('images/common/logo-star-price.png')?>" width="76" height="76" border="0" alt="Star" />
 				</div>
 				<div class="txt span10">
-					<?php
-						$text = $this->page->getContent();
-						$DOM = new DOMDocument;
-					    $DOM->loadHTML($text);
-					    $items = $DOM->getElementsByTagName('samp');
-					    for ($i = 0; $i < $items->length; $i++)
-					        echo '<p>'.$items->item($i)->nodeValue . "</p>";
-					?>
-
-					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+					<?php echo $this->page->getChapo() ?>
 				</div>
 			</div>
 		</div>
 		
 		<div class="content-winner">
-			<?php $text_epure = preg_replace ("#<p><samp(.*?)>(.*?)</samp></p>#i", '', $text); ?>
-			<?php echo $text_epure; ?>
-			
+			<?php echo $this->page->getContent() ?>
 		</div>
-		
-		<!-- <div id="winnerslider">
-			        <img src="<?php echo $this->basePath('images/content/games/winner-slider-1.jpg')?>" alt="" title="Didier, un des gagnants découvre la tablette QOOQ" />
-			        <img src="<?php echo $this->basePath('images/content/games/winner-slider-2.jpg')?>" alt="" title="Paul utilise la tablette QOOQ tous les jours" />
-			        <img src="<?php echo $this->basePath('images/content/games/winner-slider-3.jpg')?>" alt="" title="Michelle, une des gagnants s'amuse avec la tablette QOOQ" />
-			        <img src="<?php echo $this->basePath('images/content/games/winner-slider-4.jpg')?>" alt="" title="Sandra présente la tablette QOOQ à ses amies!" />
-		</div> -->
 		
 		<div class="date-social-bottom">
 			<div class="date span5"><?php echo $this->translate('Publié le'); ?> <?php echo strftime("%A %d %B %Y", $this->page->getPublicationDate()->format('U'));?></div>

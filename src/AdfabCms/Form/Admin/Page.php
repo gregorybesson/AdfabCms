@@ -165,6 +165,19 @@ class Page extends ProvidesEventsForm
         ));
 		
 		$this->add(array(
+                'type' => 'Zend\Form\Element\Textarea',
+                'name' => 'chapo',
+                'options' => array(
+                    'label' => $translator->translate('Chapô de l\'article', 'adfabcms')
+                ),
+                'attributes' => array(
+                    'cols' => '5',
+                    'rows' => '5',
+                    'id' => 'block_chapo'
+                )
+        ));
+		
+		$this->add(array(
             'type' => 'Zend\Form\Element\Select',
             'name' => 'category',
             'options' => array(

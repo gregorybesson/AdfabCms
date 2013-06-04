@@ -83,22 +83,27 @@ class IndexController extends AbstractActionController
         }
 
         $mapper = $this->getServiceLocator()->get('adfabcms_page_mapper');
-        $pages = $mapper->findByIsActive();
+        $pages = $this->getPageService()->getActivePages(false, 0);
         $page = $mapper->findByIdentifier($identifier);
+		
+		$arrayPages = array();
 
         foreach ($pages as $key=>$p) {
-            if ($p->getIdentifier() == $identifier) {
-                $nextkey = $key+1;
-                $previouskey = $key-1;
-            }
+			$arrayPages[] = $p;
+            foreach ($arrayPages as $key => $value) {
+				if ($p->getIdentifier() == $identifier) {
+					$nextkey = $key+1;
+					$previouskey = $key-1;
+				}
+			}
         }
         if ($previouskey > -1) {
-            $previousid = $pages[$previouskey]->getIdentifier();
+            $previousid = $arrayPages[$previouskey]->getIdentifier();
         } else {
             $previousid = null;
         }
-        if (isset($pages[$nextkey])) {
-            $nextid = $pages[$nextkey]->getIdentifier();
+        if (isset($arrayPages[$nextkey])) {
+            $nextid = $arrayPages[$nextkey]->getIdentifier();
         } else {
             $nextid = null;
         }
