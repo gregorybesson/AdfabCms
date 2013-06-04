@@ -51,6 +51,27 @@ $form->prepare();
 	                <?php echo $this->formSelect($form->get('category')); ?>
 	                <?php echo $this->formElementErrors($form->get('category')) ?>
                 </div>
+				<div class="label-input heading">
+		            <?php echo $this->formLabel($form->get('heading')); ?>
+		            <?php echo $this->formTextarea($form->get('heading')) . $this->formElementErrors($form->get('heading')) ?>
+		            <?php $this->QgCKEditor(
+		                'block_heading',
+		                    array(
+		                    	'BasePath' => $this->basePath('js/lib/ckeditor'),
+		                    	'Width' => "40%",
+		                        'Height' => "100",
+		                        'filebrowserBrowseUrl' => '/elfinder', // eg. 'includes/elFinder/elfinder.html'
+		                        'uiColor' => '#9AB8F3',
+		                        //'Color' => "#000",
+		                        'Toolbar'=> array(
+		                             array('Source','Maximize'),
+		                             array('Bold','Italic','Underline','Subscript','Superscript'),
+		                             array('Link','Unlink'),
+		                         )
+		                    )
+		                );
+		            ?>
+		        </div>
                 <div class="label-input file">
 	                <?php echo $this->formLabel($form->get('uploadMainImage')); ?>
 	                <?php echo $this->formFile($form->get('uploadMainImage')); ?>

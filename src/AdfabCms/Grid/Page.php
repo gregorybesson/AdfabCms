@@ -39,6 +39,12 @@ class Page extends DataGrid\DataGrid
              ->setLabel('Page Content')
              ->setVisible(false);
         //$this->addColumn($content, true);
+		
+		// heading
+        //$heading = new ATF_DataGrid_Column_Wysiwyg('heading');
+        $this->getColumn('heading')
+             ->setLabel('Page Heading')
+             ->setVisible(false);
 
         // description
         $this->getColumn('meta_description')

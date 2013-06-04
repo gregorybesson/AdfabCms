@@ -47,4 +47,15 @@ interface PageInterface
      * @return mixed
      */
     public function getContent();
+	
+	/**
+     * @param $heading
+     * @return mixed
+     */
+    public function setHeading($heading);
+
+    /**
+     * @return mixed
+     */
+    public function getHeading();
 }
