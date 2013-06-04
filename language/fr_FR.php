@@ -24,5 +24,6 @@ return array(
 	
 	// Admin Create/Edit Block
 	'This Block is available for DynaBlock' => 'Ce bloc est dynamique',
+	'Heading\'s article' => 'Chapô de l\'article',
 	
 );

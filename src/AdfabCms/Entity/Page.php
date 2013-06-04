@@ -60,6 +60,11 @@ class Page implements PageInterface, InputFilterAwareInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
+	
+	/**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $heading;
 
     /**
      * @ORM\Column(type="boolean")
@@ -181,6 +186,25 @@ class Page implements PageInterface, InputFilterAwareInterface
     public function getContent()
     {
         return $this->content;
+    }
+	
+	/**
+     * @param $heading
+     * @return Page
+     */
+    public function setHeading($heading)
+    {
+        $this->heading = $heading;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeading()
+    {
+        return $this->heading;
     }
 
     /**
