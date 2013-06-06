@@ -71,6 +71,16 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
 
         $form->setData($data);
         if (!$form->isValid()) {
+        	if (isset($data['publicationDate']) && $data['publicationDate']) {
+	            $tmpDate = \DateTime::createFromFormat('Y-m-d', $data['publicationDate']);
+	            $data['publicationDate'] = $tmpDate->format('d/m/Y');
+				$form->setData(array('publicationDate' => $data['publicationDate']));
+	        }
+			if (isset($data['closeDate']) && $data['closeDate']) {
+	            $tmpDate = \DateTime::createFromFormat('Y-m-d', $data['closeDate']);
+	            $data['closeDate'] = $tmpDate->format('d/m/Y');
+				$form->setData(array('closeDate' => $data['closeDate']));
+	        }
             return false;
         }
 
