@@ -40,16 +40,6 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
         $form->get('closeDate')->setOptions(array('format' => 'Y-m-d'));
 
         if (! $page) {
-
-            $identifierInput = $form->getInputFilter()->get('identifier');
-            $noObjectExistsValidator = new NoObjectExistsValidator(array(
-                'object_repository' => $entityManager->getRepository('AdfabCms\Entity\Page'),
-                'fields'            => 'identifier',
-                'messages'          => array('objectFound' => 'This url already exists !')
-            ));
-
-            $identifierInput->getValidatorChain()->addValidator($noObjectExistsValidator);
-
             $form->setInputFilter($form->getInputFilter());
             $page = new EntityPage();
         }
@@ -58,6 +48,15 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
 
         $path = $this->getOptions()->getMediaPath() . DIRECTORY_SEPARATOR;
         $media_url = $this->getOptions()->getMediaUrl() . '/';
+		
+		$identifierInput = $form->getInputFilter()->get('identifier');
+        $noObjectExistsValidator = new NoObjectExistsValidator(array(
+            'object_repository' => $entityManager->getRepository('AdfabCms\Entity\Page'),
+            'fields'            => 'identifier',
+            'messages'          => array('objectFound' => 'This url already exists !')
+        ));
+
+        $identifierInput->getValidatorChain()->addValidator($noObjectExistsValidator);
 
         if (isset($data['publicationDate']) && $data['publicationDate']) {
             $tmpDate = \DateTime::createFromFormat('d/m/Y', $data['publicationDate']);
