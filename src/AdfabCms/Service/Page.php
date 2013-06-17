@@ -35,7 +35,6 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
     {
         $entityManager = $this->getServiceManager()->get('zfcuser_doctrine_em');
         $form  = $this->getServiceManager()->get('adfabcms_page_form');
-        //$form->setHydrator(new ClassMethods());
         $form->get('publicationDate')->setOptions(array('format' => 'Y-m-d'));
         $form->get('closeDate')->setOptions(array('format' => 'Y-m-d'));
 
@@ -55,7 +54,7 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
             'fields'            => 'identifier',
             'messages'          => array('objectFound' => 'This url already exists !')
         ));
-
+		
         $identifierInput->getValidatorChain()->addValidator($noObjectExistsValidator);
 
         if (isset($data['publicationDate']) && $data['publicationDate']) {
@@ -69,6 +68,77 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
         }
 
         $form->setData($data);
+		
+        if (!$form->isValid()) {
+        	if (isset($data['publicationDate']) && $data['publicationDate']) {
+	            $tmpDate = \DateTime::createFromFormat('Y-m-d', $data['publicationDate']);
+	            $data['publicationDate'] = $tmpDate->format('d/m/Y');
+				$form->setData(array('publicationDate' => $data['publicationDate']));
+	        }
+			if (isset($data['closeDate']) && $data['closeDate']) {
+	            $tmpDate = \DateTime::createFromFormat('Y-m-d', $data['closeDate']);
+	            $data['closeDate'] = $tmpDate->format('d/m/Y');
+				$form->setData(array('closeDate' => $data['closeDate']));
+	        }
+            return false;
+        }
+
+        $this->getEventManager()->trigger(__FUNCTION__, $this, array('page' => $page, 'form' => $form, 'data' => $data));
+        $this->getPageMapper()->insert($page);
+        $this->getEventManager()->trigger(__FUNCTION__.'.post', $this, array('page' => $page, 'form' => $form, 'data' => $data));
+
+        if (!empty($data['uploadMainImage']['tmp_name'])) {
+            ErrorHandler::start();
+            move_uploaded_file($data['uploadMainImage']['tmp_name'], $path . $page->getId() . "-" . $data['uploadMainImage']['name']);
+            $page->setMainImage($media_url . $page->getId() . "-" . $data['uploadMainImage']['name']);
+            ErrorHandler::stop(true);
+        }
+
+        if (!empty($data['uploadSecondImage']['tmp_name'])) {
+            ErrorHandler::start();
+            move_uploaded_file($data['uploadSecondImage']['tmp_name'], $path . $page->getId() . "-" . $data['uploadSecondImage']['name']);
+            $page->setSecondImage($media_url . $page->getId() . "-" . $data['uploadSecondImage']['name']);
+            ErrorHandler::stop(true);
+        }
+        $page = $this->getPageMapper()->update($page);
+
+        return $page;
+    }
+
+	public function edit($page, array $data)
+    {
+        $entityManager = $this->getServiceManager()->get('zfcuser_doctrine_em');
+        $form  = $this->getServiceManager()->get('adfabcms_page_form');
+        $form->get('publicationDate')->setOptions(array('format' => 'Y-m-d'));
+        $form->get('closeDate')->setOptions(array('format' => 'Y-m-d'));
+        $form->bind($page);
+
+        $path = $this->getOptions()->getMediaPath() . DIRECTORY_SEPARATOR;
+        $media_url = $this->getOptions()->getMediaUrl() . '/';
+		
+		$identifierInput = $form->getInputFilter()->get('identifier');
+        $noObjectExistsValidator = new NoObjectExistsValidator(array(
+            'object_repository' => $entityManager->getRepository('AdfabCms\Entity\Page'),
+            'fields'            => 'identifier',
+            'messages'          => array('objectFound' => 'This url already exists !')
+        ));
+		
+		if($page->getIdentifier() != $data['identifier']){			
+			$identifierInput->getValidatorChain()->addValidator($noObjectExistsValidator);
+		}
+
+        if (isset($data['publicationDate']) && $data['publicationDate']) {
+            $tmpDate = \DateTime::createFromFormat('d/m/Y', $data['publicationDate']);
+            $data['publicationDate'] = $tmpDate->format('Y-m-d');
+        }
+
+        if (isset($data['closeDate']) && $data['closeDate']) {
+            $tmpDate = \DateTime::createFromFormat('d/m/Y', $data['closeDate']);
+            $data['closeDate'] = $tmpDate->format('Y-m-d');
+        }
+
+        $form->setData($data);
+		
         if (!$form->isValid()) {
         	if (isset($data['publicationDate']) && $data['publicationDate']) {
 	            $tmpDate = \DateTime::createFromFormat('Y-m-d', $data['publicationDate']);

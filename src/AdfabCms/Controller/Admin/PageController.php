@@ -97,7 +97,7 @@ class PageController extends AbstractActionController
                 $this->getRequest()->getPost()->toArray(),
                 $this->getRequest()->getFiles()->toArray()
             );
-            $page = $this->getAdminPageService()->create($page, $data);
+            $page = $this->getAdminPageService()->edit($page, $data);
             if ($page) {
                 $this->flashMessenger()->setNamespace('adfabcms')->addMessage('La page a été mise à jour');
 
