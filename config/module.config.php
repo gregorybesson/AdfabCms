@@ -31,11 +31,10 @@ return array(
 
     'view_manager' => array(
         'template_map' => array(
-            'adfab-cms/index/winner-list' => __DIR__ .  '/../view/adfab-cms/frontend/page/winner-list.phtml',
-            'adfab-cms/index/winner-page' => __DIR__ .  '/../view/adfab-cms/frontend/page/winner-page.phtml',
         ),
         'template_path_stack' => array(
-            'adfabcms' => __DIR__ . '/../view',
+            'adfabcms' => __DIR__ . '/../view/admin',
+        	'adfabcms' => __DIR__ . '/../view/frontend',
         ),
     ),
 
@@ -67,62 +66,66 @@ return array(
 
     'router' => array(
         'routes' => array(
-            'cms' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route'    => '/page/:id',
-                    'defaults' => array(
-                        'controller' => 'adfabcms',
-                        'action'     => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' =>array(
-                    'list' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/list[/:p]',
-                            'defaults' => array(
-                                'controller' => 'adfabcms',
-                                'action'     => 'list',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            'winner' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route'    => '/les-gagnants',
-                    'defaults' => array(
-                        'controller' => 'adfabcms',
-                        'action'     => 'winnerList',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' =>array(
-                    'page' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/:id',
-                            'defaults' => array(
-                                'controller' => 'adfabcms',
-                                'action'     => 'winnerPage',
-                            ),
-                        ),
-                    ),
-                    'pagination' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '[:p]',
-                            'defaults' => array(
-                                'controller' => 'adfabcms',
-                                'action'     => 'winnerList',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
+        	'frontend' => array(
+        		'child_routes' => array(
+		            'cms' => array(
+		                'type' => 'Zend\Mvc\Router\Http\Segment',
+		                'options' => array(
+		                    'route'    => '/page/:id',
+		                    'defaults' => array(
+		                        'controller' => 'adfabcms',
+		                        'action'     => 'index',
+		                    ),
+		                ),
+		                'may_terminate' => true,
+		                'child_routes' =>array(
+		                    'list' => array(
+		                        'type' => 'Segment',
+		                        'options' => array(
+		                            'route' => '/list[/:p]',
+		                            'defaults' => array(
+		                                'controller' => 'adfabcms',
+		                                'action'     => 'list',
+		                            ),
+		                        ),
+		                    ),
+		                ),
+		            ),
+		            'winner' => array(
+		                'type' => 'Zend\Mvc\Router\Http\Segment',
+		                'options' => array(
+		                    'route'    => '/les-gagnants',
+		                    'defaults' => array(
+		                        'controller' => 'adfabcms',
+		                        'action'     => 'winnerList',
+		                    ),
+		                ),
+		                'may_terminate' => true,
+		                'child_routes' =>array(
+		                    'page' => array(
+		                        'type' => 'Segment',
+		                        'options' => array(
+		                            'route' => '/:id',
+		                            'defaults' => array(
+		                                'controller' => 'adfabcms',
+		                                'action'     => 'winnerPage',
+		                            ),
+		                        ),
+		                    ),
+		                    'pagination' => array(
+		                        'type' => 'Segment',
+		                        'options' => array(
+		                            'route' => '[:p]',
+		                            'defaults' => array(
+		                                'controller' => 'adfabcms',
+		                                'action'     => 'winnerList',
+		                            ),
+		                        ),
+		                    ),
+		                ),
+		            ),
+        		),
+        	),
 
             'zfcadmin' => array(
                 'child_routes' => array(
