@@ -31,11 +31,10 @@ return array(
 
     'view_manager' => array(
         'template_map' => array(
-            'adfab-cms/index/winner-list' => __DIR__ .  '/../view/adfab-cms/frontend/page/winner-list.phtml',
-            'adfab-cms/index/winner-page' => __DIR__ .  '/../view/adfab-cms/frontend/page/winner-page.phtml',
         ),
         'template_path_stack' => array(
-            'adfabcms' => __DIR__ . '/../view',
+            'adfabcms' => __DIR__ . '/../view/admin',
+        	'adfabcms' => __DIR__ . '/../view/frontend',
         ),
     ),
 
