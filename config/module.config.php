@@ -71,7 +71,7 @@ return array(
 		            'cms' => array(
 		                'type' => 'Zend\Mvc\Router\Http\Segment',
 		                'options' => array(
-		                    'route'    => '/page/:id',
+		                    'route'    => 'page/:id',
 		                    'defaults' => array(
 		                        'controller' => 'adfabcms',
 		                        'action'     => 'index',
@@ -94,7 +94,7 @@ return array(
 		            'winner' => array(
 		                'type' => 'Zend\Mvc\Router\Http\Segment',
 		                'options' => array(
-		                    'route'    => '/les-gagnants',
+		                    'route'    => 'les-gagnants',
 		                    'defaults' => array(
 		                        'controller' => 'adfabcms',
 		                        'action'     => 'winnerList',
