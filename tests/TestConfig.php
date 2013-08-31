@@ -9,8 +9,7 @@ return array(
     	'AsseticBundle',
     	'ZfcBase',
    		'AdfabCore',
-    	'AdfabCms',
-        'Application',
+    	'AdfabCms'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

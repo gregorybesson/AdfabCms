@@ -151,6 +151,21 @@ class Module
 
                     return $viewHelper;
                 },
+                // This admin navigation layer gives the authentication layer based on BjyAuthorize ;)
+                'adminMenu' => function($sm){
+                	$nav = $sm->get('navigation')->menu('admin_navigation');
+                	$serviceLocator = $sm->getServiceLocator();
+                	$acl = $serviceLocator->get('BjyAuthorize\Service\Authorize')->getAcl();
+                	$role = $serviceLocator->get('BjyAuthorize\Service\Authorize')->getIdentity();
+                	$nav->setAcl($acl)
+                	->setRole($role)
+                	->setUseAcl()
+                	->setUlClass('nav')
+                	->setMaxDepth(10)
+                	->setRenderInvisible(false);
+                
+                	return $nav;
+                },
             ),
         );
     }

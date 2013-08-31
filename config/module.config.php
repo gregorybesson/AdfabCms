@@ -326,13 +326,13 @@ return array(
                ),
                'controllers' => array(
                		'adfabcmsadminpage' => array(
-               			'default_layout' => 'application/layout/admin/admin',
+               			'default_layout' => 'layout/admin',
                		),
                		'adfabcmsadminblock' => array(
-               				'default_layout' => 'application/layout/admin/admin',
+               				'default_layout' => 'layout/admin',
                		),
                		'adfabcmsadmindynablock' => array(
-               				'default_layout' => 'application/layout/admin/admin',
+               				'default_layout' => 'layout/admin',
                		),
                    	'adfabcms' => array(
                     'default_layout' => 'layout/2columns-right',
