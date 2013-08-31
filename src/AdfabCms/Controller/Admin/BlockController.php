@@ -40,7 +40,7 @@ protected $options, $blockMapper;
 
         $form = $this->getServiceLocator()->get('adfabcms_block_form');
         $form->get('submit')->setlabel('Add');
-        $form->setAttribute('action', $this->url()->fromRoute('zfcadmin/adfabcmsadmin/blocks/create', array('blockId' => 0)));
+        $form->setAttribute('action', $this->url()->fromRoute('admin/adfabcmsadmin/blocks/create', array('blockId' => 0)));
         $form->setAttribute('method', 'post');
         $form->bind($block);
 
@@ -52,7 +52,7 @@ protected $options, $blockMapper;
             if ($block) {
                 $this->flashMessenger()->setNamespace('adfabcms')->addMessage('The block was created');
 
-                return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/list');
+                return $this->redirect()->toRoute('admin/adfabcmsadmin/blocks/list');
             }
         }
 
@@ -69,12 +69,12 @@ protected $options, $blockMapper;
 
         $blockId = $this->getEvent()->getRouteMatch()->getParam('blockId');
         if (!$blockId) {
-            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/create');
+            return $this->redirect()->toRoute('admin/adfabcmsadmin/blocks/create');
         }
 
         $block = $service->getBlockMapper()->findById($blockId);
         $form->get('submit')->setLabel('Update');
-        $form->setAttribute('action', $this->url()->fromRoute('zfcadmin/adfabcmsadmin/blocks/edit', array('blockId' => $blockId)));
+        $form->setAttribute('action', $this->url()->fromRoute('admin/adfabcmsadmin/blocks/edit', array('blockId' => $blockId)));
         $form->setAttribute('method', 'post');
         $form->bind($block);
 
@@ -86,7 +86,7 @@ protected $options, $blockMapper;
             if ($block) {
                 $this->flashMessenger()->setNamespace('adfabcms')->addMessage('The block was created');
 
-                return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/list');
+                return $this->redirect()->toRoute('admin/adfabcmsadmin/blocks/list');
             }
         }
 
@@ -98,7 +98,7 @@ protected $options, $blockMapper;
         $blockId = $this->getEvent()->getRouteMatch()->getParam('blockId');
 
         if (!$blockId) {
-            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/list');
+            return $this->redirect()->toRoute('admin/adfabcmsadmin/blocks/list');
         }
 
         $block = $this->getAdminBlockService()->getBlockMapper()->findById($blockId);
@@ -112,7 +112,7 @@ protected $options, $blockMapper;
             }
         }
 
-        return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/blocks/list');
+        return $this->redirect()->toRoute('admin/adfabcmsadmin/blocks/list');
     }
 
     public function setOptions(ModuleOptions $options)

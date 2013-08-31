@@ -22,8 +22,8 @@ if (isset($fm[0]))
             <td><?php echo $dynarea ?></td>
             <td><?php echo count($dynablocks);?></td>
 
-            <?php $editLink = $this->url('zfcadmin/adfabcmsadmin/dynablocks/create', array('dynareaId' => $dynarea));?>
-            <?php $deleteLink = $this->url('zfcadmin/adfabcmsadmin/dynablocks/remove', array('dynareaId' => $dynarea));?>
+            <?php $editLink = $this->url('admin/adfabcmsadmin/dynablocks/create', array('dynareaId' => $dynarea));?>
+            <?php $deleteLink = $this->url('admin/adfabcmsadmin/dynablocks/remove', array('dynareaId' => $dynarea));?>
             <td><a href='<?php echo $editLink ?>'><?php echo $this->translate('Edit'); ?></a> | <a href='<?php echo $deleteLink ?>'><?php echo $this->translate('Delete'); ?></a></td>
         </tr>
     <?php endforeach; ?>
@@ -35,7 +35,7 @@ if (isset($fm[0]))
 <?php foreach ($this->dynareas as $id => $attributes): ?>
     <?php if(!array_key_exists($id,$this->activeDynareas) ): ?>
         <li>
-            <a href="<?php echo $this->url('zfcadmin/adfabcmsadmin/dynablocks/create', array('dynareaId' => $id))?>"> <?php echo $id . " : " . $attributes['title']?></a>
+            <a href="<?php echo $this->url('admin/adfabcmsadmin/dynablocks/create', array('dynareaId' => $id))?>"> <?php echo $id . " : " . $attributes['title']?></a>
             <?php //echo $attributes['description']; ?>
             <?php //echo $attributes['location']; ?>
         </li>

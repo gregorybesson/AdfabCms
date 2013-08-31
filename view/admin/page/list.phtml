@@ -8,7 +8,7 @@ if (isset($fm[0]))
 }*/
 ?>
 <ul class="liste-buttons">
-	<li class="btn-admin"><a href="<?php echo $this->url('zfcadmin/adfabcmsadmin/pages/create');?>"><?php echo $this->translate('Add new page'); ?></a></li>
+	<li class="btn-admin"><a href="<?php echo $this->url('admin/adfabcmsadmin/pages/create');?>"><?php echo $this->translate('Add new page'); ?></a></li>
 </ul>
 
 <h1>Liste des articles</h1>
@@ -19,11 +19,11 @@ if (isset($fm[0]))
         <th>
         	Date de publication
         	<?php if($this->filter == 'ASC'): ?>
-        	    <a href="<?php echo $this->url('zfcadmin/adfabcmsadmin/pages/list', array('filter' => 'DESC')); ?>">
+        	    <a href="<?php echo $this->url('admin/adfabcmsadmin/pages/list', array('filter' => 'DESC')); ?>">
         	    	<img src="/images/admin/arrow-down.png" alt="" />
         	    </a>
 			<?php else : ?>
-				<a href="<?php echo $this->url('zfcadmin/adfabcmsadmin/pages/list', array('filter' => 'ASC')); ?>">
+				<a href="<?php echo $this->url('admin/adfabcmsadmin/pages/list', array('filter' => 'ASC')); ?>">
 					<img src="/images/admin/arrow-up.png" alt="" />
 				</a>
         	<?php endif; ?>
@@ -39,15 +39,15 @@ if (isset($fm[0]))
             <td><?php echo $page->getTitle() ?></td>
             <td><?php echo $page->getIdentifier() ?></td>
 
-            <?php $editLink = $this->url('zfcadmin/adfabcmsadmin/pages/edit', array('pageId' => $page->getId()));?>
-            <?php $deleteLink = $this->url('zfcadmin/adfabcmsadmin/pages/remove', array('pageId' => $page->getId()));?>
+            <?php $editLink = $this->url('admin/adfabcmsadmin/pages/edit', array('pageId' => $page->getId()));?>
+            <?php $deleteLink = $this->url('admin/adfabcmsadmin/pages/remove', array('pageId' => $page->getId()));?>
             <td><a href='<?php echo $editLink ?>'><?php echo $this->translate('Edit'); ?></a> | <a href='<?php echo $deleteLink ?>'><?php echo $this->translate('Delete'); ?></a></td>
         </tr>
     <?php endforeach; ?>
 </table>
 
 <ul class="liste-buttons bottom">
-	<li class="btn-admin bottom"><a href="<?php echo $this->url('zfcadmin/adfabcmsadmin/pages/create');?>"><?php echo $this->translate('Add new page'); ?></a></li>
+	<li class="btn-admin bottom"><a href="<?php echo $this->url('admin/adfabcmsadmin/pages/create');?>"><?php echo $this->translate('Add new page'); ?></a></li>
 </ul>
 
-<?php echo $this->paginationControl($this->pages, 'Sliding', 'adfab-cms/partial/pagination_pagelist.phtml', array('url' => 'zfcadmin/adfabcmsadmin/pages/list', 'filter' => $this->filter)); ?>
+<?php echo $this->paginationControl($this->pages, 'Sliding', 'adfab-cms/partial/pagination_pagelist.phtml', array('url' => 'admin/adfabcmsadmin/pages/list', 'filter' => $this->filter)); ?>

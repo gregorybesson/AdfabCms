@@ -44,7 +44,7 @@ protected $options, $blockMapper;
     {
         $dynareaId = $this->getEvent()->getRouteMatch()->getParam('dynareaId');
         if (!$dynareaId) {
-            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/dynablocks/list');
+            return $this->redirect()->toRoute('admin/adfabcmsadmin/dynablocks/list');
         }
         $dynablocks = $this->getAdminDynablockService()->getDynablockMapper()->findByDynarea($dynareaId);
 
@@ -76,11 +76,11 @@ protected $options, $blockMapper;
     {
         $dynareaId = $this->getEvent()->getRouteMatch()->getParam('dynareaId');
         if (!$dynareaId) {
-            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/dynablocks/list');
+            return $this->redirect()->toRoute('admin/adfabcmsadmin/dynablocks/list');
         }
         $this->getAdminDynablockService()->getDynablockMapper()->clear($dynareaId);
 
-        return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/dynablocks/list');
+        return $this->redirect()->toRoute('admin/adfabcmsadmin/dynablocks/list');
     }
 
     public function setOptions(ModuleOptions $options)

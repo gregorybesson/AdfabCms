@@ -42,7 +42,7 @@ La dynarea <?php echo $this->dynarea;?>
   	    	      var dynarea = '<?php echo $this->dynarea; ?>';
 
     	    	  $.post(
-    			    '<?php echo $this->url('zfcadmin/adfabcmsadmin/dynablocks/create', array('dynareaId' => $this->dynarea))?>',
+    			    '<?php echo $this->url('admin/adfabcmsadmin/dynablocks/create', array('dynareaId' => $this->dynarea))?>',
 	    	    	{blockList: blockList, dynarea: dynarea},
 	    	    	function(returnVal) {
 	    	    	    // TODO

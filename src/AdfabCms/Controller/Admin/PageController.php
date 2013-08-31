@@ -66,7 +66,7 @@ class PageController extends AbstractActionController
 
         $this->flashMessenger()->setNamespace('adfabcms')->addMessage('La page a été créée');
 
-        return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/pages/list');
+        return $this->redirect()->toRoute('admin/adfabcmsadmin/pages/list');
     }
 
     public function editAction()
@@ -74,7 +74,7 @@ class PageController extends AbstractActionController
         $pageId = $this->getEvent()->getRouteMatch()->getParam('pageId');
 
         if (!$pageId) {
-            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/pages/list');
+            return $this->redirect()->toRoute('admin/adfabcmsadmin/pages/list');
         }
 
         $page = $this->getAdminPageService()->getPageMapper()->findById($pageId);
@@ -101,7 +101,7 @@ class PageController extends AbstractActionController
             if ($page) {
                 $this->flashMessenger()->setNamespace('adfabcms')->addMessage('La page a été mise à jour');
 
-                return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/pages/list');
+                return $this->redirect()->toRoute('admin/adfabcmsadmin/pages/list');
             }
         }
 
@@ -113,7 +113,7 @@ class PageController extends AbstractActionController
         $pageId = $this->getEvent()->getRouteMatch()->getParam('pageId');
 
         if (!$pageId) {
-            return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/pages/list');
+            return $this->redirect()->toRoute('admin/adfabcmsadmin/pages/list');
         }
 
         $page = $this->getAdminPageService()->getPageMapper()->findById($pageId);
@@ -128,7 +128,7 @@ class PageController extends AbstractActionController
             }
         }
 
-        return $this->redirect()->toRoute('zfcadmin/adfabcmsadmin/pages/list');
+        return $this->redirect()->toRoute('admin/adfabcmsadmin/pages/list');
     }
 
     public function setOptions(ModuleOptions $options)

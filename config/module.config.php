@@ -127,7 +127,7 @@ return array(
         		),
         	),
 
-            'zfcadmin' => array(
+            'admin' => array(
                 'child_routes' => array(
                     'adfabcmsadmin' => array(
                         'type' => 'Literal',
@@ -325,7 +325,16 @@ return array(
                 'col_right'  => 'application/common/column_right.phtml',
                ),
                'controllers' => array(
-                   'adfabcms' => array(
+               		'adfabcmsadminpage' => array(
+               			'default_layout' => 'application/layout/admin/admin',
+               		),
+               		'adfabcmsadminblock' => array(
+               				'default_layout' => 'application/layout/admin/admin',
+               		),
+               		'adfabcmsadmindynablock' => array(
+               				'default_layout' => 'application/layout/admin/admin',
+               		),
+                   	'adfabcms' => array(
                     'default_layout' => 'layout/2columns-right',
                     'actions' => array(
                         'index' => array(
@@ -368,19 +377,19 @@ return array(
         'admin' => array(
             'adfabcms' => array(
                 'label' => 'Les articles',
-                'route' => 'zfcadmin/adfabcmsadmin/pages/list',
+                'route' => 'admin/adfabcmsadmin/pages/list',
                 'resource' => 'cms',
                 'privilege' => 'list',
                 'pages' => array(
                     'list-pages' => array(
                         'label' => 'Liste des articles',
-                        'route' => 'zfcadmin/adfabcmsadmin/pages/list',
+                        'route' => 'admin/adfabcmsadmin/pages/list',
                         'resource' => 'cms',
                         'privilege' => 'list',
                         'pages' => array(
 		                    'edit-page' => array(
 		                    	'label' => 'Editer un article',
-		                        'route' => 'zfcadmin/adfabcmsadmin/pages/edit',
+		                        'route' => 'admin/adfabcmsadmin/pages/edit',
 		                        'resource' => 'cms',
 		                        'privilege' => 'edit',
 		                    ),
@@ -388,25 +397,25 @@ return array(
                     ),
                     'create-page' => array(
                         'label' => 'Créer un article',
-                        'route' => 'zfcadmin/adfabcmsadmin/pages/create',
+                        'route' => 'admin/adfabcmsadmin/pages/create',
                         'resource' => 'cms',
                         'privilege' => 'add',
                     ),
                     'list-block' => array(
                         'label' => 'Liste des blocs de contenu',
-                        'route' => 'zfcadmin/adfabcmsadmin/blocks/list',
+                        'route' => 'admin/adfabcmsadmin/blocks/list',
                         'resource' => 'cms',
                         'privilege' => 'list',
                     ),
                     'create-block' => array(
                         'label' => 'Créer un bloc de contenu',
-                        'route' => 'zfcadmin/adfabcmsadmin/blocks/create',
+                        'route' => 'admin/adfabcmsadmin/blocks/create',
                         'resource' => 'cms',
                         'privilege' => 'add',
                     ),
                     'list-dynablock' => array(
                         'label' => 'Liste des blocs dynamiques',
-                        'route' => 'zfcadmin/adfabcmsadmin/dynablocks/list',
+                        'route' => 'admin/adfabcmsadmin/dynablocks/list',
                         'resource' => 'cms',
                         'privilege' => 'list',
                     ),
