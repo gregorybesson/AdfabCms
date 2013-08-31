@@ -27,7 +27,6 @@
 		"zendframework/zend-modulemanager" : "~2.1",
 		"zendframework/zend-stdlib" : "~2.1",
 		"doctrine/doctrine-orm-module" : "*",
-		"zf-commons/zfc-admin" : "0.*",
 		"adfab/core" : "0.*"
 		
     },
