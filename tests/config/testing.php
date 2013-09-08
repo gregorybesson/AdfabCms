@@ -10,4 +10,11 @@ return array(
 			)
 		)
 	),
+	'facebook' => array(
+			'fb_appid' => 'xxxxxx',
+	),
+	'rss' => array(
+			'url' => 'http://www.tf1.fr',
+	),
+	'channel' => 'test',
 );

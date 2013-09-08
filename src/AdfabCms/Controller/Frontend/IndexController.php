@@ -17,8 +17,8 @@ class IndexController extends AbstractActionController
             return $this->notFoundAction();
         }
 
-        $mapper = $this->getServiceLocator()->get('adfabcms_page_mapper');
-        $page = $mapper->findByIdentifier($identifier);
+        $sp = $this->getPageService();
+        $page = $sp->getPageMapper()->findByIdentifier($identifier);
 
         if (!$page) {
             return $this->notFoundAction();
@@ -27,8 +27,6 @@ class IndexController extends AbstractActionController
         if (!$page->getActive()) {
             return $this->notFoundAction();
         }
-
-        //$this->layout('layout/game-2columns-right');
         
          $this->layout()->setVariables(
             array(

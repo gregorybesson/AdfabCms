@@ -318,7 +318,7 @@ class Page extends EventProvider implements ServiceManagerAwareInterface
      * Set service manager instance
      *
      * @param  ServiceManager $serviceManager
-     * @return User
+     * @return Game
      */
     public function setServiceManager(ServiceManager $serviceManager)
     {
