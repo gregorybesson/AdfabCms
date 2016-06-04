@@ -51,11 +51,11 @@ $form->prepare();
 	                <?php echo $this->formSelect($form->get('category')); ?>
 	                <?php echo $this->formElementErrors($form->get('category')) ?>
                 </div>
-				<div class="label-input chapo">
-		            <?php echo $this->formLabel($form->get('chapo')); ?>
-		            <?php echo $this->formTextarea($form->get('chapo')) . $this->formElementErrors($form->get('chapo')) ?>
+				<div class="label-input heading">
+		            <?php echo $this->formLabel($form->get('heading')); ?>
+		            <?php echo $this->formTextarea($form->get('heading')) . $this->formElementErrors($form->get('heading')) ?>
 		            <?php $this->QgCKEditor(
-		                'block_chapo',
+		                'block_heading',
 		                    array(
 		                    	'BasePath' => $this->basePath('js/lib/ckeditor'),
 		                    	'Width' => "40%",

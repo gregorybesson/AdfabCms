@@ -5,7 +5,7 @@
 		<div class="logo-star span2"><img src="<?php echo $this->basePath('images/common/logo-star-price.png')?>" width="76" height="76" border="0" alt="Star" /></div>
 		<div class="txt span10">
 			<h2><a href="<?php echo $this->url('winner/page', array('id' => $this->page->getIdentifier())); ?>"><?php echo $this->page->getTitle(); ?></a></h2>
-			<div><?php echo $this->page->getChapo() ?></div>
+			<div><?php echo $this->page->getHeading() ?></div>
 		</div>
 	</div>
 	<div class="readmore"><a href="<?php echo $this->url('winner/page', array('id' => $this->page->getIdentifier())); ?>">+ Lire la suite</a></div>

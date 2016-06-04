@@ -40,10 +40,10 @@ class Page extends DataGrid\DataGrid
              ->setVisible(false);
         //$this->addColumn($content, true);
 		
-		// chapo
-        //$chapo = new ATF_DataGrid_Column_Wysiwyg('chapo');
-        $this->getColumn('chapo')
-             ->setLabel('Page Chapo')
+		// heading
+        //$heading = new ATF_DataGrid_Column_Wysiwyg('heading');
+        $this->getColumn('heading')
+             ->setLabel('Page Heading')
              ->setVisible(false);
 
         // description

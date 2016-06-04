@@ -49,13 +49,13 @@ interface PageInterface
     public function getContent();
 	
 	/**
-     * @param $chapo
+     * @param $heading
      * @return mixed
      */
-    public function setChapo($chapo);
+    public function setHeading($heading);
 
     /**
      * @return mixed
      */
-    public function getChapo();
+    public function getHeading();
 }

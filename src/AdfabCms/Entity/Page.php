@@ -64,7 +64,7 @@ class Page implements PageInterface, InputFilterAwareInterface
 	/**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $chapo;
+    protected $heading;
 
     /**
      * @ORM\Column(type="boolean")
@@ -189,12 +189,12 @@ class Page implements PageInterface, InputFilterAwareInterface
     }
 	
 	/**
-     * @param $chapo
+     * @param $heading
      * @return Page
      */
-    public function setChapo($chapo)
+    public function setHeading($heading)
     {
-        $this->chapo = $chapo;
+        $this->heading = $heading;
 
         return $this;
     }
@@ -202,9 +202,9 @@ class Page implements PageInterface, InputFilterAwareInterface
     /**
      * @return mixed
      */
-    public function getChapo()
+    public function getHeading()
     {
-        return $this->chapo;
+        return $this->heading;
     }
 
     /**

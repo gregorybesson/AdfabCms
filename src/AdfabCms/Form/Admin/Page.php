@@ -166,14 +166,14 @@ class Page extends ProvidesEventsForm
 		
 		$this->add(array(
                 'type' => 'Zend\Form\Element\Textarea',
-                'name' => 'chapo',
+                'name' => 'heading',
                 'options' => array(
-                    'label' => $translator->translate('Chapô de l\'article', 'adfabcms')
+                    'label' => $translator->translate('Heading\'s article', 'adfabcms')
                 ),
                 'attributes' => array(
                     'cols' => '5',
                     'rows' => '5',
-                    'id' => 'block_chapo'
+                    'id' => 'block_heading'
                 )
         ));
 		
